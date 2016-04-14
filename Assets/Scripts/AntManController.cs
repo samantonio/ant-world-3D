@@ -7,24 +7,24 @@ using UnitySampleAssets.CrossPlatformInput;
 
 
 		Vector3 movement;                   // The vector to store the direction of the player's movement.
-		Animator anim;                      // Reference to the animator component.
+		//Animator anim;                      // Reference to the animator component.
 		Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
-		#if !MOBILE_INPUT
-		int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
+		
+		/*int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
 		float camRayLength = 100f;          // The length of the ray from the camera into the scene.
-		#endif
+		*/
 
 		void Awake ()
-		{
-			#if !MOBILE_INPUT
+	{
+		/*#if !MOBILE_INPUT
 			// Create a layer mask for the floor layer.
 			floorMask = LayerMask.GetMask ("Floor");
 			#endif
 
 			// Set up references.
-			anim = GetComponent <Animator> ();
-			playerRigidbody = GetComponent <Rigidbody> ();
-		}
+			anim = GetComponent <Animator> ();*/
+		playerRigidbody = GetComponent <Rigidbody> ();
+	}
 
 
 		void FixedUpdate ()
@@ -37,10 +37,11 @@ using UnitySampleAssets.CrossPlatformInput;
 			Move (h, v);
 
 			// Turn the player to face the mouse cursor.
-			Turning ();
+			/*(Turning ();
+			 */
 
 			// Animate the player.
-			Animating (h, v);
+			//Animating (h, v);
 		}
 
 
@@ -64,7 +65,7 @@ using UnitySampleAssets.CrossPlatformInput;
 			//Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
 			// Create a RaycastHit variable to store information about what was hit by the ray.
-			RaycastHit floorHit;
+			//RaycastHit floorHit;
 
 			// Perform the raycast and if it hits something on the floor layer...
 			/*if(Physics.Raycast (camRay, out floorHit, camRayLength, floorMask))
@@ -102,12 +103,12 @@ using UnitySampleAssets.CrossPlatformInput;
 		}
 
 
-		void Animating (float h, float v)
+		/*void Animating (float h, float v)
 		{
 			// Create a boolean that is true if either of the input axes is non-zero.
 			bool walking = h != 0f || v != 0f;
 
 			// Tell the animator whether or not the player is walking.
 			anim.SetBool ("IsWalking", walking);
-		}
+		}*/
 	}
